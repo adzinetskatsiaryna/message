@@ -1,0 +1,11 @@
+.app-wrapper{
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-areas: 'nik nik'
+                        'avatar message';
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 2fr 8fr;
+  font-family: Arial;
+}

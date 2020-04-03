@@ -1,0 +1,14 @@
+.nik{
+    grid-area: nik;
+    text-align: center;
+}
+.name{
+    font-size: 15px;
+    color: #000000;
+    font-weight: bold;
+}
+.number{
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.5);
+}

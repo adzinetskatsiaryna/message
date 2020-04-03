@@ -1,0 +1,32 @@
+.message{
+    grid-area: message;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.9);
+    padding: 15px;
+    background: rgb(173, 208, 247);
+}
+.message:before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 84%;
+    width: 0;
+    height: 0;
+    border-bottom: 20px solid rgb(173, 208, 247);
+    border-left: 20px solid transparent;
+}
+
+.subject{
+    margin: 10px 0px 5px;
+    font-weight: bold;
+}
+.content{
+    margin: 10px 0 5px;
+}
+.time{
+    align-self: flex-end;
+    margin: 2px 0px 0px;
+    color: rgba(0, 0, 0, 0.5);
+}
