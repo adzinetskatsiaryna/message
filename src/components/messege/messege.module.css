@@ -23,10 +23,22 @@
     font-weight: bold;
 }
 .content{
+    max-width: 900px;
+    width: 100%;
     margin: 10px 0 5px;
 }
 .time{
     align-self: flex-end;
     margin: 2px 0px 0px;
     color: rgba(0, 0, 0, 0.5);
+}
+.quality{
+    display: flex;
+    justify-content: space-between;
+    max-width: 500px;
+    width: 100%;
+}
+.activeClass{
+    color: #000000;
+    font-weight: bolder;
 }
