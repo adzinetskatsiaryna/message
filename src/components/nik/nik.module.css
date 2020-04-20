@@ -1,6 +1,7 @@
 .nik{
     grid-area: nik;
     text-align: center;
+    margin-bottom: 10px;
 }
 .name{
     font-size: 15px;

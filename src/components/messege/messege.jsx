@@ -1,7 +1,6 @@
 import React from 'react';
 import classes from './messege.module.css'
 
-
 const Message = (props) => {
 
         let spanQualities = props.quality.map(q => {
@@ -17,6 +16,7 @@ const Message = (props) => {
             <div className={classes.quality}>{spanQualities}</div>
             <p className={classes.time}>{new Date().toLocaleTimeString( 'ru-RU', {hour: '2-digit', minute: '2-digit'})}
             </p>
+
         </div>
 
     );

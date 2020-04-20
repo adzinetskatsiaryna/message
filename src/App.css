@@ -4,8 +4,20 @@
   margin: 0 auto;
   display: grid;
   grid-template-areas: 'nik nik'
-                        'avatar message';
+                        'avatar message'
+                        'addName addName';
   grid-template-rows: 100px 1fr;
   grid-template-columns: 2fr 8fr;
   font-family: Arial;
+}
+.counter{
+  margin: 10px;
+  padding: 10px 14px;
+  border: 1px solid #000000;
+  background-color: lightskyblue;
+}
+.addName{
+  grid-area: addName;
+  display: flex;
+  justify-content: center;
 }
