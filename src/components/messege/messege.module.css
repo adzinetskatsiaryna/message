@@ -6,7 +6,7 @@
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.9);
     padding: 15px;
     background: rgb(173, 208, 247);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 .message:before {
     content: '';

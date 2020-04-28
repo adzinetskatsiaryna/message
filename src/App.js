@@ -2,12 +2,13 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Avatar from "./components/avatar/avatar";
-import Messege from "./components/messege/messege"
+import Messege from "./components/messege/messege";
 import Nik from "./components/nik/nik";
+import AddName from "./AddName";
+import Names from "./Names";
 
 class App extends React.Component {
 
-    click = React.createRef()
     state = {
         counter: 0,
         qualities: [
@@ -17,14 +18,25 @@ class App extends React.Component {
             {id: 3, title: 'anarchist', type: false},
             {id: 4, title: 'nationalist', type: false},
         ],
-    }
+        names: [
+            {id: 0, name: 'Katerina'},
+            {id: 1, name: 'Ivan'},
+            {id: 2, name: 'Timon'},
+        ]
+    };
 
-    addAlert = () =>{
-        this.setState({counter: this.state.counter + 1});
-        let name = this.click.current.value;
-        alert('Hello' + ' ' + name);
-        this.click.current.value = '';
-    }
+    addName = (newAddName) => {
+        let newName = {id: 3, name: newAddName}
+        let newNames = [...this.state.names, newName]
+
+        this.setState(
+            {
+                names: newNames,
+                counter: ++this.state.counter
+            }
+        );
+
+    };
 
     render = () => {
 
@@ -33,11 +45,13 @@ class App extends React.Component {
                 <Nik/>
                 <Avatar/>
                 <Messege quality={this.state.qualities}/>
-                <div className='addName'>
-                    <span className='counter'>{this.state.counter}</span>
-                    <input type='text' ref={this.click} placeholder='add name'/>
-                    <button onClick={this.addAlert}>click me</button>
-                </div>
+                <AddName addName={this.addName} counter={this.state.counter}/>
+                <Names names={this.state.names} />
+                {/*<div className='addName'>*/}
+                {/*    <span className='counter'>{this.state.counter}</span>*/}
+                {/*    <input type='text' ref={this.click} placeholder='add name'/>*/}
+                {/*    <button onClick={this.addAlert}>click me</button>*/}
+                {/*</div>*/}
             </div>
         )
 
