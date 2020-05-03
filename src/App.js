@@ -27,7 +27,7 @@ class App extends React.Component {
             {id: 1, name: 'Ivan'},
             {id: 2, name: 'Timon'},
         ],
-        isMenuOpen: false,
+
 
     };
 
@@ -43,30 +43,13 @@ class App extends React.Component {
         );
 
     };
-    onMenuButtonClick = () => {
-        this.setState({isMenuOpen: !this.state.isMenuOpen}) //
-    }
+
     render = () => {
-        let classAdd = this.state.isMenuOpen ? "show" : "nav"
-
-
         return (
             <HashRouter>
-                {/*< Menu />*/}
+
                 <div className='app-wrapper'>
-                    <div className='menu'>
-                        <div className='menu-button' onClick={this.onMenuButtonClick}><i
-                            className="fas fa-bars"></i></div>
-                        <nav className={`nav + ${classAdd}`}>
-                            <div onClick={this.onMenuButtonClick} className='menu-close'><i
-                                className="fas fa-times"></i></div>
-                            <ul className='menu-items'>
-                                <li className='menu-list'><NavLink exact to='/'  activeClassName='active' className='menu-link'>Monday</NavLink></li>
-                                <li className='menu-list'><NavLink to='/Tuesday'  activeClassName='active'
-                                                                   className='menu-link'>Truesday</NavLink></li>
-                            </ul>
-                        </nav>
-                    </div>
+                    < Menu />
                     {/*<Nik/>*/}
                     {/*<Avatar/>*/}
                     {/*<Messege quality={this.state.qualities}/>*/}
@@ -74,16 +57,7 @@ class App extends React.Component {
                         addName={this.addName}
                         counter={this.state.counter}
                         names={this.state.names}/>}/>
-                    {/*<Monday*/}
-                    {/*    addName={this.addName}*/}
-                    {/*    counter={this.state.counter}*/}
-                    {/*    names={this.state.names}/>*/}
-                    {/*<div>понедельник*/}
-                    {/*   */}
-                    {/*    <AddName addName={this.addName} counter={this.state.counter}/>*/}
-                    {/*    <Names names={this.state.names} /></div>*/}
                     <Route path='/Tuesday' render={() => <Tuesday/>}/>
-                    {/*<Tuesday/>*/}
                     {/*<div className='addName'>*/}
                     {/*    <span className='counter'>{this.state.counter}</span>*/}
                     {/*    <input type='text' ref={this.click} placeholder='add name'/>*/}

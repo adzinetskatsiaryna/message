@@ -14,18 +14,18 @@ class Menu extends React.Component {
         this.setState({isMenuOpen: !this.state.isMenuOpen}) //
     }
     render = () => {
-        let classAdd = this.state.isMenuOpen ? "show" : "nav"
+        let classAdd = this.state.isMenuOpen ? "show" : "nav";
         return (
             <div className='menu'>
-                <div className='menu-button' onClick={this.onMenuBattonClick}><i
+                <div className='menu-button' onClick={this.onMenuButtonClick}><i
                     className="fas fa-bars"></i></div>
                 <nav className={`nav + ${classAdd}`}>
-                    <div onClick={this.onMenuBattonClick} className='menu-close'><i
+                    <div onClick={this.onMenuButtonClick} className='menu-close'><i
                         className="fas fa-times"></i></div>
                     <ul className='menu-items'>
                         <li className='menu-list'><NavLink exact to='/'  activeClassName='active' className='menu-link'>Monday</NavLink></li>
                         <li className='menu-list'><NavLink to='/Tuesday'  activeClassName='active'
-                                                           className='menu-link'>Truesday</NavLink></li>
+                                                          className='menu-link'>Truesday</NavLink></li>
                     </ul>
                 </nav>
             </div>
