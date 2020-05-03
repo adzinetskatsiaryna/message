@@ -17,8 +17,54 @@
   border: 1px solid #000000;
   background-color: lightskyblue;
 }
-.addName{
-  grid-area: addName;
+
+.error{
+  border-color: red;
+}
+.menu{
+  position: relative;
+}
+.menu-items{
+  padding: 0;
+  margin: 0;
+}
+.menu-list {
+  list-style: none;
+}
+.menu-link{
+  text-decoration: none;
+  color: #555;
   display: flex;
-  justify-content: center;
+  padding: 10px 16px;
+  border-bottom: 1px solid #555;
+}
+.menu-button{
+  position: relative;
+  z-index: 99;
+  font-size: 26px;
+  cursor: pointer;
+}
+.nav{
+  width: 20vw;
+  border: 1px solid #888;
+  position: absolute;
+  top: 0px;
+  z-index: 999;
+  background-color: #ffff;
+  left: -50vw;
+  transition: left 0.3s ease;
+}
+.nav.show{
+  left: 0;
+}
+.menu-close{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 7px 7px 7px 0;
+}
+.active{
+  color: red;
 }

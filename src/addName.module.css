@@ -3,5 +3,7 @@
   grid-area: addName;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-bottom: 10px;
+  margin-top: 20px;
 }

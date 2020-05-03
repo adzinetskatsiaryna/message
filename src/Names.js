@@ -13,7 +13,7 @@ class Names extends React.Component {
 
      let Names = this.props.names.map((name)=>{
             return(
-                <Name id = {name.id}  name={name.name}/>
+                <Name name={name.name}/>
             )
         });
         return (

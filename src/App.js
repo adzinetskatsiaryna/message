@@ -1,11 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 import Avatar from "./components/avatar/avatar";
 import Messege from "./components/messege/messege";
 import Nik from "./components/nik/nik";
 import AddName from "./AddName";
 import Names from "./Names";
+import Tuesday from "./Tuesday";
+import Monday from "./Monday";
+import {HashRouter, NavLink, Route} from "react-router-dom";
+import Menu from "./Menu";
 
 class App extends React.Component {
 
@@ -22,7 +26,9 @@ class App extends React.Component {
             {id: 0, name: 'Katerina'},
             {id: 1, name: 'Ivan'},
             {id: 2, name: 'Timon'},
-        ]
+        ],
+        isMenuOpen: false,
+
     };
 
     addName = (newAddName) => {
@@ -32,27 +38,59 @@ class App extends React.Component {
         this.setState(
             {
                 names: newNames,
-                counter: ++this.state.counter
+                counter: this.state.counter + 1,
             }
         );
 
     };
-
+    onMenuButtonClick = () => {
+        this.setState({isMenuOpen: !this.state.isMenuOpen}) //
+    }
     render = () => {
+        let classAdd = this.state.isMenuOpen ? "show" : "nav"
+
 
         return (
-            <div className='app-wrapper'>
-                <Nik/>
-                <Avatar/>
-                <Messege quality={this.state.qualities}/>
-                <AddName addName={this.addName} counter={this.state.counter}/>
-                <Names names={this.state.names} />
-                {/*<div className='addName'>*/}
-                {/*    <span className='counter'>{this.state.counter}</span>*/}
-                {/*    <input type='text' ref={this.click} placeholder='add name'/>*/}
-                {/*    <button onClick={this.addAlert}>click me</button>*/}
-                {/*</div>*/}
-            </div>
+            <HashRouter>
+                {/*< Menu />*/}
+                <div className='app-wrapper'>
+                    <div className='menu'>
+                        <div className='menu-button' onClick={this.onMenuButtonClick}><i
+                            className="fas fa-bars"></i></div>
+                        <nav className={`nav + ${classAdd}`}>
+                            <div onClick={this.onMenuButtonClick} className='menu-close'><i
+                                className="fas fa-times"></i></div>
+                            <ul className='menu-items'>
+                                <li className='menu-list'><NavLink exact to='/'  activeClassName='active' className='menu-link'>Monday</NavLink></li>
+                                <li className='menu-list'><NavLink to='/Tuesday'  activeClassName='active'
+                                                                   className='menu-link'>Truesday</NavLink></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    {/*<Nik/>*/}
+                    {/*<Avatar/>*/}
+                    {/*<Messege quality={this.state.qualities}/>*/}
+                    <Route exact path='/' render={() => <Monday
+                        addName={this.addName}
+                        counter={this.state.counter}
+                        names={this.state.names}/>}/>
+                    {/*<Monday*/}
+                    {/*    addName={this.addName}*/}
+                    {/*    counter={this.state.counter}*/}
+                    {/*    names={this.state.names}/>*/}
+                    {/*<div>понедельник*/}
+                    {/*   */}
+                    {/*    <AddName addName={this.addName} counter={this.state.counter}/>*/}
+                    {/*    <Names names={this.state.names} /></div>*/}
+                    <Route path='/Tuesday' render={() => <Tuesday/>}/>
+                    {/*<Tuesday/>*/}
+                    {/*<div className='addName'>*/}
+                    {/*    <span className='counter'>{this.state.counter}</span>*/}
+                    {/*    <input type='text' ref={this.click} placeholder='add name'/>*/}
+                    {/*    <button onClick={this.addAlert}>click me</button>*/}
+                    {/*</div>*/}
+                </div>
+            </HashRouter>
         )
 
     }
