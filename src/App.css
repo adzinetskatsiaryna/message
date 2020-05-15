@@ -1,5 +1,5 @@
 .app-wrapper{
-  max-width: 900px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   display: grid;
@@ -67,4 +67,27 @@
 }
 .active{
   color: red;
+}
+
+.todoList > div {
+  padding: 10px;
+}
+
+.todoList-task {
+
+}
+.filter-active {
+  background-color: blue;
+}
+.error {
+  border-color: red;
+}
+.todoList-task.done {
+  opacity: 0.5;
+}
+.tuesday{
+  display: flex;
+}
+.louder{
+  margin: 0 auto;
 }
