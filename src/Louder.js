@@ -13,7 +13,6 @@ class Louder extends React.Component {
             </div>
 
         )
-
     }
 }
 

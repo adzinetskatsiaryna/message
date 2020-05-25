@@ -4,7 +4,6 @@ import Tuesday from "./Tuesday";
 import Monday from "./Monday";
 import {HashRouter, NavLink, Route} from "react-router-dom";
 import Menu from "./Menu";
-import louder from './louder.gif'
 import Louder from "./Louder";
 
 class App extends React.Component {

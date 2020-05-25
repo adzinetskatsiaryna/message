@@ -16,7 +16,7 @@ class Monday extends React.Component {
         let stateAsString = localStorage.getItem("state");
         if (stateAsString) {
             let state = JSON.parse(stateAsString);
-            state.tasks.forEach((n) => {
+            state.names.forEach((n) => {
                 if (n.id >= this.newNameId) {
                     this.newNameId = n.id + 1
                 }
