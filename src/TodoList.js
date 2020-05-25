@@ -49,11 +49,16 @@ class TodoList extends React.Component {
     newTaskId = 0;
     addTask = (newText)=>{
         let newTask = {
-            id: this.newTaskId,
-            title: newText,
-            isDone: false,
-            priority: 'low',
-        };
+                id: this.newTaskId,
+                title: newText,
+                isDone: false,
+                priority: 'low',
+                created: new Date().toLocaleString(),
+                updated: '',
+                finished: '',
+            }
+
+        ;
         this.newTaskId++
         let newTasks = [...this.state.tasks, newTask];
         this.setState({
@@ -71,7 +76,7 @@ class TodoList extends React.Component {
     changeStatus = (isDone, taskId)=>{
         let tasksCopy = this.state.tasks.map((t)=>{
             if (t.id===taskId){
-                return {...t, isDone: isDone}
+                return {...t, isDone: isDone, finished: new Date().toLocaleString()}
             }
             return t
         });
@@ -83,7 +88,7 @@ class TodoList extends React.Component {
     changesTitle = (title, taskId)=>{
         let tasksCopy = this.state.tasks.map((t)=>{
             if (t.id===taskId){
-                return {...t, title: title}
+                return {...t, title: title, update: new Date().toLocaleString()}
             }
             return t
         });
@@ -95,7 +100,7 @@ class TodoList extends React.Component {
     changesPriority = (status, taskId)=>{
         let tasksNew = this.state.tasks.map((t)=>{
             if(t.id===taskId){
-                return {...t, priority: status}
+                return {...t, priority: status, update: new Date().toLocaleString()}
             } else {
                 return t
             }
@@ -112,7 +117,6 @@ class TodoList extends React.Component {
         });
         this.setState({tasks})
     };
-
 
     render = () => {
 

@@ -39,8 +39,8 @@ class Tuesday extends React.Component {
 
     state = {
         todolists: [
-            {id: 10, title: 'days'},
-            {id: 11, title: 'week'}
+            // {id: 10, title: 'days'},
+            // {id: 11, title: 'week'}
             ]
     };
 

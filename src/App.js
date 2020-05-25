@@ -5,6 +5,7 @@ import Monday from "./Monday";
 import {HashRouter, NavLink, Route} from "react-router-dom";
 import Menu from "./Menu";
 import louder from './louder.gif'
+import Louder from "./Louder";
 
 class App extends React.Component {
     state = {
@@ -19,7 +20,8 @@ class App extends React.Component {
 
     render = () => {
         if(this.state.loading === true){
-            return  <div className='louder'><img src={louder}/></div>
+            return <Louder />
+            // return  <div className='louder'><img src={louder}/></div>
         }
         return (
             <HashRouter>
