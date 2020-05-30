@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './App.css';
+import '../../App.css';
 import Input from "./Input";
 import classes from './button.module.css'
 

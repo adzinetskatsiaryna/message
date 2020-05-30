@@ -1,6 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import '../../App.css';
 import AddName from "./AddName";
 import Names from "./Names";
 
@@ -16,9 +15,9 @@ class Monday extends React.Component {
         let stateAsString = localStorage.getItem("state");
         if (stateAsString) {
             let state = JSON.parse(stateAsString);
-            state.names.forEach((n) => {
-                if (n.id >= this.newNameId) {
-                    this.newNameId = n.id + 1
+            state.names.forEach(name => {
+                if (name.id >= this.newNameId) {
+                    this.newNameId = name.id + 1
                 }
             });
             this.setState(state)

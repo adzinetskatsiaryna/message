@@ -1,39 +1,59 @@
 import React from 'react';
 import './App.css';
-import Tuesday from "./Tuesday";
-import Monday from "./Monday";
 import {HashRouter, NavLink, Route} from "react-router-dom";
-import Menu from "./Menu";
-import Louder from "./Louder";
+
+import Tuesday from "./components/tousday/Tuesday";
+import Monday from "./components/monday/Monday";
+import Louder from "./components/louder/Louder";
+import Menu from "./components/menu/Menu";
+import {connect} from "react-redux";
 
 class App extends React.Component {
-    state = {
-        loading: true,
-    };
+    // state = {
+    //     loading: true,
+    // };
 
     componentDidMount() {
+        this.props.loadingSet(true);
         setTimeout(() => {
-            this.setState({loading: false})
-        }, 3000)
+            // this.setState({loading: false});
+            this.props.loadingSet(false)
+        }, 1000)
     };
 
     render = () => {
-        if(this.state.loading === true){
-            return <Louder />
-            // return  <div className='louder'><img src={louder}/></div>
-        }
-        return (
-            <HashRouter>
-                <div className='app-wrapper'>
-                    < Menu />
-                    {/*<Nik/>*/}
-                    {/*<Avatar/>*/}
-                    {/*<Messege quality={this.state.qualities}/>*/}
-                    <Route exact path='/' render={() => <Monday />}/>
-                    <Route path='/Tuesday' render={() => <Tuesday/>}/>
-                </div>
-            </HashRouter>
+        return(
+
+            this.props.loading
+                ?  <Louder />
+        :   <HashRouter>
+            <div className='app-wrapper'>
+                < Menu />
+                {/*<Nik/>*/}
+                {/*<Avatar/>*/}
+                {/*<Messege quality={this.state.qualities}/>*/}
+                <Route exact path='/' render={() => <Monday />}/>
+                <Route path='/Tuesday' render={() => <Tuesday />}/>
+            </div>
+        </HashRouter>
         )
+
+        // if(this.props.loading){
+        //     return <Louder />
+        // } else {
+        //     return (
+        //         <HashRouter>
+        //             <div className='app-wrapper'>
+        //                 < Menu />
+        //                 {/*<Nik/>*/}
+        //                 {/*<Avatar/>*/}
+        //                 {/*<Messege quality={this.state.qualities}/>*/}
+        //                 <Route exact path='/' render={() => <Monday />}/>
+        //                 <Route path='/Tuesday' render={() => <Tuesday />}/>
+        //             </div>
+        //         </HashRouter>
+        //     )
+        // }
 
     }
 }
@@ -74,4 +94,24 @@ class App extends React.Component {
 //         </div>
 //     )
 // }
-export default App;
+
+const mapStateToProps = (state) => {
+    return {
+        loading: state.loading
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loadingSet: (status) => {
+            const action = {
+                type: "SET_LOADING",
+                loading: status
+            };
+            dispatch(action)
+        }
+    }
+}
+
+const ConnectedApp = connect(mapStateToProps,mapDispatchToProps)(App);
+export default ConnectedApp;

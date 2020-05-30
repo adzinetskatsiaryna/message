@@ -1,6 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import '../../App.css';
 import Name from "./Name";
 import classes from "./names.module.css"
 
