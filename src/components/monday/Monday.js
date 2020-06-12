@@ -6,27 +6,27 @@ import Names from "./Names";
 
 class Monday extends React.Component {
 
-    saveState = () => {
-        let stateAsString = JSON.stringify(this.state);
-        localStorage.setItem("state", stateAsString)
-    };
-
-    restoreState = () => {
-        let stateAsString = localStorage.getItem("state");
-        if (stateAsString) {
-            let state = JSON.parse(stateAsString);
-            state.names.forEach(name => {
-                if (name.id >= this.newNameId) {
-                    this.newNameId = name.id + 1
-                }
-            });
-            this.setState(state)
-        }
-    };
-
-    componentDidMount() {
-        this.restoreState()
-    }
+    // saveState = () => {
+    //     let stateAsString = JSON.stringify(this.state);
+    //     localStorage.setItem("state", stateAsString)
+    // };
+    //
+    // restoreState = () => {
+    //     let stateAsString = localStorage.getItem("state");
+    //     if (stateAsString) {
+    //         let state = JSON.parse(stateAsString);
+    //         state.names.forEach(name => {
+    //             if (name.id >= this.newNameId) {
+    //                 this.newNameId = name.id + 1
+    //             }
+    //         });
+    //         this.setState(state)
+    //     }
+    // };
+    //
+    // componentDidMount() {
+    //     this.restoreState()
+    // }
 
     state = {
         counter: 0,

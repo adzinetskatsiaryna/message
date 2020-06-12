@@ -7,6 +7,7 @@ import Monday from "./components/monday/Monday";
 import Louder from "./components/louder/Louder";
 import Menu from "./components/menu/Menu";
 import {connect} from "react-redux";
+import Wednesday from "./components/wednesday/wednasday";
 
 class App extends React.Component {
     // state = {
@@ -22,20 +23,21 @@ class App extends React.Component {
     };
 
     render = () => {
-        return(
+        return (
 
             this.props.loading
-                ?  <Louder />
-        :   <HashRouter>
-            <div className='app-wrapper'>
-                < Menu />
-                {/*<Nik/>*/}
-                {/*<Avatar/>*/}
-                {/*<Messege quality={this.state.qualities}/>*/}
-                <Route exact path='/' render={() => <Monday />}/>
-                <Route path='/Tuesday' render={() => <Tuesday />}/>
-            </div>
-        </HashRouter>
+                ? <Louder/>
+                : <HashRouter>
+                    <div className='app-wrapper'>
+                        < Menu/>
+                        {/*<Nik/>*/}
+                        {/*<Avatar/>*/}
+                        {/*<Messege quality={this.state.qualities}/>*/}
+                        <Route exact path='/' render={() => <Monday/>}/>
+                        <Route path='/Tuesday' render={() => <Tuesday/>}/>
+                        <Route path='/Wednesday' render={() => <Wednesday/>}/>
+                    </div>
+                </HashRouter>
         )
 
         // if(this.props.loading){
@@ -97,7 +99,7 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        loading: state.loading
+        loading: state.tuesdayPage.loading
     }
 };
 
@@ -113,5 +115,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const ConnectedApp = connect(mapStateToProps,mapDispatchToProps)(App);
+const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
 export default ConnectedApp;

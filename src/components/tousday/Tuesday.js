@@ -90,7 +90,7 @@ class Tuesday extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        todolists: state.todolists
+        todolists: state.tuesdayPage.todolists
     }
 };
 

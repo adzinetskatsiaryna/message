@@ -1,0 +1,15 @@
+.dark{
+    background-color: rgba(0,0,0, 0.5);
+    font-weight: bold;
+    color: #ffffff;
+}
+.light{
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bold;
+}
+.green{
+    background-color: rgba(0, 128,0, 0.5);
+    color: red;
+    font-weight: bold;
+}
