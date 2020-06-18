@@ -3,7 +3,6 @@ import style from './wednes.module.css'
 class Input extends React.Component{
 
     onChangedStyle = (e)=>{
-        debugger
         this.props.onChangedStyle(this.props.id, e.currentTarget.checked)
     };
 

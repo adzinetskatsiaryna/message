@@ -14,7 +14,6 @@ const SettingsReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case ADD_STYLE:
-            debugger;
             return {
                 ...state,
                 style: state.style.map(s=>{
