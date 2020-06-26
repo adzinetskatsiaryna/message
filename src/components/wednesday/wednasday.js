@@ -3,8 +3,9 @@ import style from './wednes.module.css'
 import Input from "./Input";
 import  {addStyleAC} from "../../SettingsReducer";
 import {connect} from "react-redux";
-import {checkInputAC} from "../../WednasdayReducer";
-import axios from 'axios'
+import {checkInputAC, setLoadingAC, setSendingRequestAC, setStatusAC} from "../../WednasdayReducer";
+import {api, tryCatch} from "../../api/api";
+import louder from '../louder/louder.gif'
 
 class Wednesday extends React.Component {
 
@@ -18,22 +19,30 @@ class Wednesday extends React.Component {
     };
 
     onCheckClick = () => {
-        axios.post('https://neko-cafe-back.herokuapp.com/auth/test',{success: this.props.isCheck})
+        debugger
+        this.props.setStatus('INPROGRESS')
+        this.props.setLoading(true)
+        this.props.setSendingRequest(true)
+        api.getRespons(this.props.isCheck)
             .then(response => {
-            console.log(response.data)
-        })
+
+                console.log(response.data)
+                this.props.setStatus("SUCCESS")
+                this.props.setLoading(false)
+                this.props.setSendingRequest(false)
+            })
+            .catch(error=>{
+                this.props.setStatus('ERROR')
+                this.props.setSendingRequest(false)
+                this.props.setLoading(false)
+            })
+        // axios.post('https://neko-cafe-back.herokuapp.com/auth/test',{success: this.props.isCheck})
+        //     .then(response => {
+        //     console.log(response.data)
+        // })
     };
 
-    tryCatch = async ( onCheckClick ) => {
-        try {
-            const response = await onCheckClick();
-            console.log('answer: ', response.data);
-            return response;
-        } catch (error) {
-            console.log('error: ', {...error});
-            return 'error';
-        }
-    };
+
 
     render = () => {
 
@@ -46,6 +55,7 @@ class Wednesday extends React.Component {
                 key={s.id}
             />
         });
+        
         let stylePage = this.props.style.find(s => s.status === true);
 
         return (
@@ -53,10 +63,19 @@ class Wednesday extends React.Component {
             <div className={style[stylePage.name]}>
                 {inputRadio}
                 <h1>Hello wednesday</h1>
+
                 <div>
                     <input type='checkbox' onChange={this.onCheckInput} checked={this.props.isCheck} />
-                    <button onClick={()=>{this.tryCatch(this.onCheckClick)}}>Send</button>
+                    <button disabled={this.props.isSendingRequest} onClick={()=>{tryCatch(this.onCheckClick)}}>Send</button>
+                    <div>
+                        {this.props.isLoading
+                            ? <img src={louder}/>
+                            :  <div>{this.props.status}</div>
+                        }
+                    </div>
+
                 </div>
+
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Quisque velit lectus, semper quis tortor vestibulum, finibus
@@ -79,7 +98,10 @@ class Wednesday extends React.Component {
 const mapStateToProps = (state) => {
     return {
         style: state.settingsReducer.style,
-        isCheck: state.wednesdayReducer.isCheck
+        isCheck: state.wednesdayReducer.isCheck,
+        isSendingRequest: state.wednesdayReducer.isSendingRequest,
+        status: state.wednesdayReducer.status,
+        isLoading: state.wednesdayReducer.isLoading
     }
 };
 
@@ -92,8 +114,19 @@ const mapDispatchToProps = (dispatch) => {
         checkInput(checked){
             const action=checkInputAC(checked);
             dispatch(action)
+        },
+        setLoading(loading){
+            const action=setLoadingAC(loading)
+            dispatch (action)
+        },
+        setStatus(status){
+            const action= setStatusAC(status)
+            dispatch(action)
+        },
+        setSendingRequest(request){
+            const action = setSendingRequestAC(request)
+            dispatch(action)
         }
-
     }
 };
 

@@ -4,8 +4,8 @@ export const ADD_STYLE= 'ADD_STYLE';
 const initialState = {
     style: [
         { id: 1, name: 'dark', status: false },
-        { id: 2, name: 'light', status: false },
-        { id: 3, name: 'green', status: true },
+        { id: 2, name: 'green', status: false},
+        { id: 3, name: 'light', status: true },
     ]
 };
 
