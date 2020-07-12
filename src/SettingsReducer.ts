@@ -1,16 +1,26 @@
 
 export const ADD_STYLE= 'ADD_STYLE';
 
-const initialState = {
+export type  StyleType = {
+    id: string
+    name: string
+    status: boolean
+}
+
+type StateType={
+    style: Array<StyleType>
+}
+
+const initialState: StateType = {
     style: [
-        { id: 1, name: 'dark', status: false },
-        { id: 2, name: 'green', status: false},
-        { id: 3, name: 'light', status: true },
+        { id:'1', name: 'dark', status: false },
+        { id: '2', name: 'green', status: false},
+        { id: '3', name: 'light', status: true },
     ]
 };
 
 
-const SettingsReducer = (state = initialState, action) => {
+const SettingsReducer = (state:StateType = initialState, action:AddStyleActionType) => {
     switch (action.type) {
 
         case ADD_STYLE:
@@ -33,14 +43,18 @@ const SettingsReducer = (state = initialState, action) => {
 
 };
 
-export const addStyleAC = (id, status) => {
+export const addStyleAC = (id: string, status: boolean):AddStyleActionType => {
     return {
         type: ADD_STYLE,
         id: id,
         status: status
     }
 };
-
+export type AddStyleActionType = {
+    type: typeof ADD_STYLE
+    id: string
+    status: boolean
+}
 
 
 export default SettingsReducer

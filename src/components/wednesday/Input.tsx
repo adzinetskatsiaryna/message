@@ -1,8 +1,15 @@
-import React from "react";
-import style from './wednes.module.css'
-class Input extends React.Component{
+import React, {ChangeEvent} from "react";
 
-    onChangedStyle = (e)=>{
+type PropsType = {
+    id: string
+    name: string
+    checked: boolean
+    onChangedStyle : (id: string, status: boolean)=> void
+}
+
+class Input extends React.Component<PropsType>{
+
+    onChangedStyle = (e: ChangeEvent<HTMLInputElement>)=>{
         this.props.onChangedStyle(this.props.id, e.currentTarget.checked)
     };
 
